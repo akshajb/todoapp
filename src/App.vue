@@ -1,32 +1,39 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Navbar />
+    <router-view />
   </div>
 </template>
 
+<script>
+import Navbar from "@/components/Navbar";
+import { mapActions } from "vuex";
+export default {
+  components: {
+    Navbar
+  },
+  methods: {
+    ...mapActions(["checkLocal"])
+  },
+  created() {
+    this.checkLocal();
+  }
+};
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
+body {
+  font-family: "Lato", sans-serif;
+  background: #eeeeff;
 }
-
-#nav {
-  padding: 30px;
+h2 {
+  font-weight: 300 !important;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#toast-container {
+  right: 50% !important;
+  top: 80% !important;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.btn:hover {
+  transform: scale(1.04);
 }
 </style>
