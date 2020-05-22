@@ -5,7 +5,7 @@ import Auth from "./modules/Auth";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  strict: true,
+  strict: !process.env.NODE_ENV == "production",
   state: {},
   mutations: {},
   actions: {},
