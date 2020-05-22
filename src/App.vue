@@ -39,7 +39,7 @@ h2 {
   font-weight: 300 !important;
 }
 #toast-container {
-  right: 50% !important;
+  /* right: 50% !important; */
   top: 80% !important;
 }
 .btn:hover {
