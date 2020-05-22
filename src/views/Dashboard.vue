@@ -1,6 +1,6 @@
 <template>
   <div class="home container">
-    <h2>{{userInfo.name}}'s Dashboard</h2>
+    <h4>{{userInfo.name}}'s Dashboard</h4>
     <div class="card content">
       <ul class="collection" v-if="allTodos.length">
         <li class="collection-item row" v-for="(todo, i) in allTodos" :key="i">
@@ -21,7 +21,7 @@
           <div class="date col s4 m3">
             <span class="pl-3 blue-grey-text text-darken-4 white-text">
               {{
-              todo.date
+              formatDate(todo.date)
               }}
             </span>
           </div>
@@ -60,6 +60,7 @@
 <script>
 // @ is an alias to /src
 import { mapGetters, mapActions } from "vuex";
+import moment from "moment";
 export default {
   name: "Dashboard",
   components: {},
@@ -76,6 +77,9 @@ export default {
     ...mapActions(["getAllTodos"]),
     editTodo(todo) {
       this.$router.push({ name: "EditTodo", params: { newTodo: todo } });
+    },
+    formatDate(date) {
+      return moment(date).format("MMM DD, YYYY");
     }
   },
   computed: {
@@ -94,7 +98,7 @@ export default {
   box-shadow: none;
 }
 .collection {
-  background-color: #eeeeff;
+  background-color: var(--main_two);
   border: none;
 }
 .collection .collection-item {

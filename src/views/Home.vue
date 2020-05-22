@@ -10,7 +10,10 @@
             </h1>
           </div>
           <div class="card-content">
-            <router-link :to="{name: 'Signup'}" class="btn blue darken-4 btn-large">
+            <router-link
+              :to="{name: 'Signup'}"
+              class="btn blue darken-4 waves-effect waves-ripple btn-large"
+            >
               Sign up
               <i class="material-icons right">cloud</i>
             </router-link>
@@ -40,12 +43,10 @@ export default {
 .card {
   text-align: center;
   padding: 1rem;
-  margin: auto;
+  margin-top: 5rem;
+  box-shadow: none;
 }
-.banner-text {
-  /* width: 50%; */
-  font-family: "Abril Fatface", cursive;
-}
+
 .btn {
   margin: 2rem;
   font-weight: 600;

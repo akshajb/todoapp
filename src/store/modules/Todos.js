@@ -40,6 +40,11 @@ const mutations = {
     var index = state.todos.findIndex((element) => element._id == todo._id);
     state.todos[index].status = todo.status;
   },
+
+  editDate: (state, todo) => {
+    var index = state.todos.findIndex((element) => element._id == todo._id);
+    state.todos[index].date = todo.date;
+  },
 };
 
 const actions = {

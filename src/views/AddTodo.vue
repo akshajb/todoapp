@@ -1,6 +1,6 @@
 <template>
   <div class="add-todo container">
-    <h2>Add Todo</h2>
+    <h4>Add Todo</h4>
     <div class="card">
       <div class="row">
         <form class="col s12" @submit.prevent="addTodo($event)">
@@ -26,7 +26,7 @@
             <label>Due Date</label>
           </div>
           <div class="input-field col s6">
-            <button class="btn waves-effect waves-light" type="submit" name="action">
+            <button class="btn blue darken-4 waves-effect waves-light" type="submit" name="action">
               Add
               <i class="material-icons right">add_circle</i>
             </button>
@@ -98,6 +98,11 @@ export default {
 .card {
   box-shadow: none;
   padding: 1rem;
-  width: 70%;
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+  .card {
+    width: 70%;
+  }
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="Navbar navbar-fixed">
-    <nav class="nav-extended blue accent-2">
+    <nav class="nav-extended blue darken-4">
       <div class="nav-wrapper">
         <ul class="center">
           <li>
-            <router-link class="black-text" to="/">Home</router-link>
+            <router-link class="secondary" to="/">Home</router-link>
           </li>
           <li>
-            <router-link class="black-text" to="/about">About</router-link>
+            <router-link class="secondary" to="/about">About</router-link>
           </li>
           <li v-if="userInfo.uid">
             <a
@@ -57,6 +57,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.secondary {
+  color: #dfeafb;
+}
 .modal {
   height: 100%;
 }

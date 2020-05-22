@@ -22,9 +22,15 @@ export default {
 </script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
+:root {
+  --main_one: #0d47a1;
+  --main_two: #dfeafb;
+  --main_three: #3dedff;
+}
+
 body {
   font-family: "Lato", sans-serif;
-  background: #eeeeff;
+  background: var(--main_two);
 }
 h2 {
   font-weight: 300 !important;

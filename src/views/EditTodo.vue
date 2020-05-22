@@ -1,7 +1,7 @@
 <template>
   <div class="edit-todo container">
-    <h2>Edit Todo</h2>
-    <div class="card">
+    <h4>Edit Todo</h4>
+    <div class="card" v-if="newTodo">
       <div class="row">
         <form class="col s12" @submit.prevent="editTodo($event)">
           <div class="input-field col s12">
@@ -22,17 +22,24 @@
             <label>Status</label>
           </div>
           <div class="input-field col s6">
-            <input name="date" type="text" class="datepicker" ref="date" />
+            <input
+              name="date"
+              type="text"
+              class="datepicker"
+              :value="date"
+              ref="date"
+              @change="changeDate"
+            />
             <label>Due Date</label>
           </div>
           <div class="input-field col s6">
-            <button class="btn waves-effect waves-light" type="submit" name="action">
+            <button class="btn blue darken-4 waves-effect waves-light" type="submit" name="action">
               Edit
               <i class="material-icons right">edit</i>
             </button>
             <button
-              v-on:click="deleteTodo"
-              class="delete btn-floating btn-small waves-effect waves-light center"
+              data-target="deleteModal"
+              class="delete btn-floating btn-small waves-effect waves-light center modal-trigger"
               type="button"
             >
               <i class="material-icons red right">delete</i>
@@ -41,12 +48,28 @@
         </form>
       </div>
     </div>
+    <!-- Modal Markup -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <h4>Are you sure you want to delete this Todo ?</h4>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="btn modal-close waves-effect red waves-green white-text"
+          v-on:click="deleteTodo"
+        >
+          <i class="material-icons red right">delete</i>
+          Delete
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import M from "materialize-css";
 import { mapActions } from "vuex";
-
+import moment from "moment";
 export default {
   name: "EditTodo",
   props: {
@@ -90,6 +113,11 @@ export default {
           _id: this.newTodo._id
         });
       }
+    },
+    date: {
+      get() {
+        return moment(this.newTodo.date).format("MMM DD, YYYY");
+      }
     }
   },
   mounted() {
@@ -99,17 +127,23 @@ export default {
     inputs.forEach(input => {
       input.focus();
     });
-    M.Datepicker.init(elems, {});
+    const instances = M.Datepicker.init(elems, {});
+    instances[0].setDate(this.newTodo.date);
   },
   methods: {
-    editTodo() {
+    changeDate() {
       var instance = M.Datepicker.getInstance(this.$refs.date);
-      this.newTodo.date = instance.date;
+      this.$store.commit("editDate", {
+        date: instance.date,
+        _id: this.newTodo._id
+      });
+    },
+    editTodo() {
       if (
+        this.newTodo.date &&
         this.newTodo.title &&
         this.newTodo.desc &&
-        this.newTodo.status &&
-        this.newTodo.date
+        this.newTodo.status
       ) {
         this.changeTodo(this.newTodo)
           .then(data => {
@@ -152,10 +186,18 @@ export default {
 .card {
   box-shadow: none;
   padding: 1rem;
-  width: 70%;
+  width: 100%;
 }
 .delete {
   margin-left: 0.5rem;
   color: red;
+}
+.modal {
+  top: 30% !important;
+}
+@media only screen and (min-width: 600px) {
+  .card {
+    width: 70%;
+  }
 }
 </style>
