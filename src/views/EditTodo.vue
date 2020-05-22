@@ -39,7 +39,7 @@
             </button>
             <button
               data-target="deleteModal"
-              class="delete btn-floating btn-small waves-effect waves-light center modal-trigger"
+              class="delete btn-floating btn-flat btn-small waves-effect waves-light center modal-trigger"
               type="button"
             >
               <i class="material-icons red right">delete</i>
@@ -51,7 +51,7 @@
     <!-- Modal Markup -->
     <div id="deleteModal" class="modal">
       <div class="modal-content">
-        <h4>Are you sure you want to delete this Todo ?</h4>
+        <h5>Are you sure you want to delete this Todo ?</h5>
       </div>
       <div class="modal-footer">
         <a

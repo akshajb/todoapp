@@ -2,7 +2,7 @@
   <div class="home container">
     <h4>{{userInfo.name}}'s Dashboard</h4>
     <div class="card content">
-      <ul class="collection" v-if="allTodos.length">
+      <ul class="collection" v-if="allTodos.length && loaded">
         <li class="collection-item row" v-for="(todo, i) in allTodos" :key="i">
           <i
             :class="
@@ -41,7 +41,7 @@
           </div>
         </li>
       </ul>
-      <div class="no-todo" v-if="!allTodos.length">
+      <div class="no-todo" v-if="!allTodos.length && loaded">
         <h4>You dont have any todos</h4>
         <router-link
           :to="{ name: 'AddTodo' }"
@@ -53,6 +53,7 @@
           <i class="material-icons right">add_circle</i>
         </router-link>
       </div>
+      <Loader v-if="!loaded" />
     </div>
   </div>
 </template>
@@ -60,17 +61,21 @@
 <script>
 // @ is an alias to /src
 import { mapGetters, mapActions } from "vuex";
+import Loader from "@/components/Loader.vue";
 import moment from "moment";
 export default {
   name: "Dashboard",
-  components: {},
+  components: {
+    Loader
+  },
   data() {
     return {
       statusStyle: {
         overdue: { color: "red", shade: "lighten-1", icon: "cancel" },
         ongoing: { color: "yellow", shade: "darken-2", icon: "hourglass_full" },
         completed: { color: "green", shade: "lighten-1", icon: "check_circle" }
-      }
+      },
+      loaded: false
     };
   },
   methods: {
@@ -86,7 +91,13 @@ export default {
     ...mapGetters(["allTodos", "userInfo"])
   },
   created() {
-    this.getAllTodos();
+    this.getAllTodos()
+      .then(() => {
+        this.loaded = true;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 </script>

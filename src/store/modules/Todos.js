@@ -50,15 +50,19 @@ const mutations = {
 const actions = {
   getAllTodos: ({ commit, rootState }) => {
     const userId = rootState.Auth.user.uid;
-    axios
-      .get(`${config.baseUrl}/api/todos/${userId}`)
-      .then((data) => {
-        console.log("Storing Todos");
-        commit("assignTodos", data.data);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`${config.baseUrl}/api/todos/${userId}`)
+        .then((data) => {
+          console.log("Storing Todos");
+          commit("assignTodos", data.data);
+          resolve(data.data);
+        })
+        .catch((error) => {
+          console.log(error.response);
+          reject(error);
+        });
+    });
   },
   storeTodo: ({ commit }, todo) => {
     return new Promise((resolve, reject) => {
