@@ -103,7 +103,7 @@ export default {
 </script>
 <style scoped>
 .home {
-  font-family: "Lato", sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 .card {
   box-shadow: none;
@@ -113,7 +113,7 @@ export default {
   border: none;
 }
 .collection .collection-item {
-  font-family: "Lato", sans-serif;
+  font-family: "Fira Sans", sans-serif;
   border: none;
   margin: 1rem;
   display: block;

@@ -1,6 +1,6 @@
 <template>
   <div class="sign-up container">
-    <h3>Sign up</h3>
+    <h4>Sign up</h4>
     <div class="card">
       <div class="row">
         <form class="col s12" @submit.prevent="register($event)">

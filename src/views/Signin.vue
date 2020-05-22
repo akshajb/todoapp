@@ -1,6 +1,6 @@
 <template>
   <div class="sign-in container">
-    <h3>Sign in</h3>
+    <h4>Sign in</h4>
     <div v-if="!loading" class="card">
       <div class="row">
         <form class="col s12" @submit.prevent="validate">

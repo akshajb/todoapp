@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view />
+    <vue-page-transition name="fade">
+      <router-view />
+    </vue-page-transition>
   </div>
 </template>
 
@@ -10,19 +12,19 @@ import Navbar from "@/components/Navbar";
 import { mapActions } from "vuex";
 export default {
   components: {
-    Navbar
+    Navbar,
   },
   methods: {
-    ...mapActions(["checkLocal"])
+    ...mapActions(["checkLocal"]),
   },
   created() {
     this.checkLocal();
-  }
+  },
 };
 </script>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
-/* @import url("/src/assets/base.css"); */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500&display=swap");
+
 :root {
   --main_one: #0d47a1;
   --main_two: #dfeafb;
@@ -30,7 +32,7 @@ export default {
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Fira Sans", sans-serif;
   background: var(--main_two);
 }
 h2 {
