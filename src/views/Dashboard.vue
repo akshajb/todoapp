@@ -106,6 +106,7 @@ export default {
   border: none;
   margin: 1rem;
   display: block;
+  border-radius: 20px;
 }
 .title {
   font-weight: 700;

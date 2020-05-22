@@ -80,6 +80,11 @@ export default {
 
 <style scoped>
 .card {
-  width: 70%;
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+  .card {
+    width: 70%;
+  }
 }
 </style>

@@ -56,7 +56,7 @@
       <div class="modal-footer">
         <a
           href="#!"
-          class="btn modal-close waves-effect red waves-green white-text"
+          class="btn btn-small modal-close waves-effect red waves-green white-text"
           v-on:click="deleteTodo"
         >
           <i class="material-icons red right">delete</i>
@@ -194,6 +194,7 @@ export default {
 }
 .modal {
   top: 30% !important;
+  border-radius: 20px !important;
 }
 @media only screen and (min-width: 600px) {
   .card {

@@ -23,7 +23,7 @@
       <div v-if="userInfo.uid" class="nav-content">
         <router-link
           :to="{ name: 'AddTodo' }"
-          class="btn btn-floating btn-large blue-grey darken-4 waves-effect waves-light halfway-fab"
+          class="btn-floating btn-large blue-grey darken-4 waves-effect waves-light halfway-fab"
         >
           <i class="material-icons">add</i>
         </router-link>
@@ -63,7 +63,10 @@ export default {
 .modal {
   height: 100%;
 }
-.router-link-exact-active {
+nav {
+  box-shadow: none;
+}
+li .router-link-exact-active {
   border-bottom: 4px solid white;
 }
 .sign-out {

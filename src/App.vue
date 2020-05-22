@@ -22,6 +22,7 @@ export default {
 </script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap");
+/* @import url("/src/assets/base.css"); */
 :root {
   --main_one: #0d47a1;
   --main_two: #dfeafb;
@@ -41,5 +42,14 @@ h2 {
 }
 .btn:hover {
   transform: scale(1.04);
+}
+
+.card {
+  box-shadow: none !important;
+  border-radius: 20px !important;
+}
+.btn {
+  box-shadow: none !important;
+  border-radius: 5px !important;
 }
 </style>
